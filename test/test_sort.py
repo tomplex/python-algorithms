@@ -1,7 +1,7 @@
 import pytest
 import random
 
-from sort import bubble_sort, recursive_bubble_sort, insertion_sort_, insertion_sort, selection_sort
+from sort import bubble_sort, recursive_bubble_sort, insertion_sort_, insertion_sort, selection_sort, merge_sort
 
 one_to_100 = list(range(1, 100))
 
@@ -14,6 +14,7 @@ def shuffled(input_list):
 
 sort_test_cases = [
     [],
+    [1, 3],
     [1, 2, 3, 4, 5, 6],
     [2, 4, 7, 7, 10],
     one_to_100,
@@ -39,5 +40,15 @@ def test_insertion_sort_impl1(expected):
 @pytest.mark.parametrize('expected', sort_test_cases)
 def test_insertion_sort_impl2(expected):
     assert expected == insertion_sort_(shuffled(expected))
+
+
+@pytest.mark.parametrize('expected', sort_test_cases)
+def test_selection_sort(expected):
+    assert expected == selection_sort(shuffled(expected))
+
+
+@pytest.mark.parametrize('expected', sort_test_cases)
+def test_merge_sort(expected):
+    assert expected == merge_sort(shuffled(expected))
 
 
