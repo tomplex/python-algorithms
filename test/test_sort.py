@@ -1,7 +1,7 @@
 import pytest
 import random
 
-from sort import bubble_sort, insertion_sort
+from sort import bubble_sort, recursive_bubble_sort, insertion_sort_, insertion_sort, selection_sort
 
 one_to_100 = list(range(1, 100))
 
@@ -23,20 +23,21 @@ sort_test_cases = [
 
 @pytest.mark.parametrize('expected', sort_test_cases)
 def test_bubble_sort(expected):
-    assert expected == bubble_sort.bubble_sort(shuffled(expected))
+    assert expected == bubble_sort(shuffled(expected))
 
 
 @pytest.mark.parametrize('expected', sort_test_cases)
 def test_recursive_bubble_sort(expected):
-    assert expected == bubble_sort.recursive_bubble_sort(shuffled(expected))
+    assert expected == recursive_bubble_sort(shuffled(expected))
 
 
 @pytest.mark.parametrize('expected', sort_test_cases)
-def test_insertion_sort(expected):
-    assert expected == insertion_sort.insertion_sort(shuffled(expected))
+def test_insertion_sort_impl1(expected):
+    assert expected == insertion_sort(shuffled(expected))
+
 
 @pytest.mark.parametrize('expected', sort_test_cases)
-def test_insertion_sort(expected):
-    assert expected == insertion_sort.insertion_sort_(shuffled(expected))
+def test_insertion_sort_impl2(expected):
+    assert expected == insertion_sort_(shuffled(expected))
 
 

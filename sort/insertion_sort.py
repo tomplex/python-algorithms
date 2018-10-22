@@ -1,10 +1,15 @@
 """
 Insertion sort implementations.
 
+https://www.geeksforgeeks.org/insertion-sort/
+
 """
-from collections import deque
+
 
 def insertion_sort(unsorted):
+    """
+    Implementation of insertion sort.
+    """
 
     for idx in range(1, len(unsorted)):
         key = unsorted[idx]
@@ -20,7 +25,13 @@ def insertion_sort(unsorted):
 
 
 def insertion_sort_(unsorted):
+    """
+    Implementation of insertion sort, where instead of "shifting" the list's elements,
+    we pop the element out and then put it into the list at the right place.
+
+    """
     final = list(unsorted)
+
     for idx in range(1, len(final)):
         if final[idx] < final[idx - 1]:
             value = final.pop(idx)
@@ -31,9 +42,3 @@ def insertion_sort_(unsorted):
 
     return final
 
-
-
-
-
-if __name__ == '__main__':
-    print(insertion_sort_([6, 4, 2, 7, 1]))
